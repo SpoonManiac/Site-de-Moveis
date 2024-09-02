@@ -8,7 +8,7 @@ class Moveis:
         self.imagem = imagem
     
 
-movel = Moveis("Mesa de jantar", "Mesas", "/static/img/mesa-lua.png")
+movel = Moveis("Mesa lua", "Mesas", "/static/img/mesa-lua.png")
 movel2 = Moveis("Poltrona Balanço", "Acentos", "/static/img/poltrona-balanço.png")
 movel3 = Moveis("Sofá Aqua", "Sofás", "/static/img/sofa-aqua.png")
 lista = [movel, movel2, movel3]
