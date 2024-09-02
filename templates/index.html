@@ -52,7 +52,7 @@
           {% for cate in cat %}
         <div class="col-6 col-md-4 col-xxl-2">
         <div class="card">
-            <img class="card-img-top" src="/static/img/mesa-lua.png" alt="mesa-lua">
+            <img class="card-img-top" src="{{ cate.imagem }}" alt="{{ cate.nome}}">
             <div class="card-header">
             <p class="text-center"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
               {{ cate.nome }}<br>
