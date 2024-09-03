@@ -2,15 +2,16 @@ from flask import Flask, render_template, request, redirect
 import os
 
 class Moveis:
-    def __init__(self, nome, categoria, imagem):
+    def __init__(self, nome, categoria, imagem, link_ver_mais):
         self.nome = nome
         self.categaria = categoria
         self.imagem = imagem
+        self.link_ver_mais = link_ver_mais
     
 
-movel = Moveis("Mesa lua", "Mesas", "/static/img/mesa-lua.png")
-movel2 = Moveis("Poltrona Balanço", "Acentos", "/static/img/poltrona-balanço.png")
-movel3 = Moveis("Sofá Aqua", "Sofás", "/static/img/sofa-aqua.png")
+movel = Moveis("Mesa lua", "Mesas", "/static/img/mesa-lua.png", "https://pbs.twimg.com/profile_images/1643667108461412365/9nUoGvqY_400x400.jpg")
+movel2 = Moveis("Poltrona Balanço", "Acentos", "/static/img/poltrona-balanço.png", "https://pbs.twimg.com/profile_images/1643667108461412365/9nUoGvqY_400x400.jpg")
+movel3 = Moveis("Sofá Aqua", "Sofás", "/static/img/sofa-aqua.png", "https://pbs.twimg.com/profile_images/1643667108461412365/9nUoGvqY_400x400.jpg")
 lista = [movel, movel2, movel3]
 
 app = Flask(__name__)
@@ -33,6 +34,7 @@ def criar():
     nome = request.form['nome']
     categoria = request.form['categoria']
     imagem = request.files.get('imagem')
+    link_ver_mais = request.form.get('link_ver_mais')
 
     if imagem and imagem.filename != '':
         filename = os.path.join(app.config[PASTA_UPLOAD], imagem.filename)
@@ -42,7 +44,10 @@ def criar():
     else:
         imagem_url = "/static/img/default-image.png"
 
-    moveis = Moveis(nome, categoria, imagem_url)
+    if not link_ver_mais:
+        link_ver_mais = "https://pbs.twimg.com/profile_images/1643667108461412365/9nUoGvqY_400x400.jpg"
+
+    moveis = Moveis(nome, categoria, imagem_url, link_ver_mais)
     lista.append(moveis)
     return redirect('/')
 
