@@ -42,7 +42,7 @@ def criar():
         imagem_url = f"/static/img/{imagem.filename}"
 
     else:
-        imagem_url = "/static/img/default-image.png"
+        imagem_url = "/static/img/default-image.gif"
 
     if not link_ver_mais:
         link_ver_mais = "https://pbs.twimg.com/profile_images/1643667108461412365/9nUoGvqY_400x400.jpg"
